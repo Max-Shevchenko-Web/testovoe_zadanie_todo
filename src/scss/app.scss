@@ -1,0 +1,97 @@
+// @import 'fonts';
+@import 'variables';
+@import 'libs/_normalize';
+
+@import 'components/all';
+
+body {
+  background-color: $background;
+  padding: 50px 0;
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1400px;
+  @media (max-width: 768px) {
+    width: calc(100% - 40px);
+  }
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.todo-select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 330px;
+
+  select {
+    border-radius: 10px;
+    background-color: $orange;
+  }
+}
+
+.btn {
+  padding: 0 11px;
+  border-radius: 15px;
+  margin: 0 7px;
+  background-color: $orange;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e7835b;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.no-todo {
+  width: 100%;
+  height: calc(100vh - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid $error-message-block;
+
+  p{
+    color: $error-message
+  }
+}
+
