@@ -58,9 +58,8 @@ body {
 
 .todo-select {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  width: 400px;
   margin: 10px 0;
 
   select {
@@ -69,6 +68,7 @@ body {
     font-size: $comon-font-size;
     border: 1px solid $black;
     cursor: pointer;
+    margin: 0 5px;
   }
 }
 

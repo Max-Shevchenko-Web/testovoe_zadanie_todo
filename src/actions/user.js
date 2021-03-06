@@ -19,13 +19,9 @@ export const login =  (username, password) => {
             dispatch(setToken(response.data.message.token))
             dispatch(clearNotification())
           } else {
-            let username = response.data.message.username ? response.data.message.username : ''
             let password = response.data.message.password ? response.data.message.password : ''
-            if(username === password) {
-              username = ''
-            }
-
-            const message = `${username} ${password}`
+            let username = 'Поле является обязательным для заполнения'
+            const message = response.data.message.username ===  username ? `${username}` : `${password}`
             dispatch(addNotification(message, 5))
             dispatch(logout())
           }

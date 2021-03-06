@@ -26,7 +26,13 @@ export default function tasksReducer(state = defaultState, action) {
   switch (action.type) {
     case SET_TASKS: return {...state, tasks: action.payload}
     case SET_TOTAL_TASK_COUNT: return {...state, totalTaskCount: +action.payload}
-    case ADD_NEW_TASK: return {...state, tasks: state.tasks.concat(action.payload), totalTaskCount: +state.totalTaskCount + 1}
+    case ADD_NEW_TASK: return {...state,
+      tasks: [
+        ...state.tasks.slice(0, 0),
+        action.payload,
+        ...state.tasks.slice(0)
+      ],
+      totalTaskCount: +state.totalTaskCount + 1}
     case SET_ALL_PAGES:
       const numTasks = state.totalTaskCount
       const allPages = Math.ceil(numTasks/3)
