@@ -94,6 +94,8 @@ function Popup() {
     setUsername(username)
     if(username.length  === 0) {
       setUsernameError('username cannot be empty')
+    } else if(username.trim().length  === 0) {
+      setUsernameError('username cannot contain only spaces')
     } else {
       setUsernameError('')
     }
@@ -103,6 +105,8 @@ function Popup() {
     setText(e.target.value)
     if(text.length  === 0) {
       setTextError('text cannot be empty')
+    } else if(text.trim().length  === 0) {
+      setUsernameError('text cannot contain only spaces')
     } else {
       setTextError('')
     }

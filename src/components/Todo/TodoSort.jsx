@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortField, setSortDirection } from '../../redux/todoReducer';
 import Button from './../Button/Button';
-import Popup from './../Popup/index';
 import { setShowPopup } from '../../redux/appReducer';
 
 function TodoSort() {
@@ -29,7 +28,6 @@ function TodoSort() {
         <option value="asc">by asc</option>
         <option value="desc">by desc</option>
       </select>
-      <Popup/>
     </div>
   )
 }
