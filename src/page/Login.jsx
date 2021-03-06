@@ -22,20 +22,22 @@ function Login() {
   return (
     <div className='authorization' onKeyPress={keyEnter}>
       <Notification/>
-      <div className="authorization__header">Login</div>
-      <input
-        onChange={(event)=> setUsername(event.target.value)}
-        value={username}
-        type="text"
-        placeholder="Enter your username ..."
-      />
-      <input
-        onChange={(event)=> setPassword(event.target.value)}
-        value={password}
-        type="password"
-        placeholder="Enter password..."
-      />
-      <button className="authorization__btn" onClick={loginHendler}>Login</button>
+      <div className="authorization__block">
+        <div className="authorization__header">Login</div>
+        <input
+          onChange={(event)=> setUsername(event.target.value)}
+          value={username}
+          type="text"
+          placeholder="Enter your username ..."
+        />
+        <input
+          onChange={(event)=> setPassword(event.target.value)}
+          value={password}
+          type="password"
+          placeholder="Enter password..."
+        />
+        <button className="authorization__btn" onClick={loginHendler}>Login</button>
+      </div>
     </div>
   )
 }

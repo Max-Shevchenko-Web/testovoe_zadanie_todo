@@ -14,6 +14,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getTasks(sortField, sortDirection, currentPage))
+    // eslint-disable-next-line
   }, [currentPage, sortField, sortDirection])
 
   const tasksOnPage = tasks.slice(0, 3)

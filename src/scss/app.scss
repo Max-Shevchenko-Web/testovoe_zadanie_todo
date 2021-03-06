@@ -6,9 +6,9 @@
 
 body {
   background-color: $background;
-  padding: 50px 0;
+  padding: 25px 0;
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding: 10px 0;
   }
 }
 
@@ -28,9 +28,9 @@ body {
   align-items: center;
   flex-direction: column;
   width: 80%;
-  min-height: 100vh;
   margin: 0 auto;
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 25px;
 }
 
 .pagination {
@@ -38,11 +38,21 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-size: $comon-font-size;
 
   &__block {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__radio-button {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 50px;
+
   }
 }
 
@@ -50,11 +60,15 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 330px;
+  width: 400px;
+  margin: 10px 0;
 
   select {
     border-radius: 10px;
     background-color: $orange;
+    font-size: $comon-font-size;
+    border: 1px solid $black;
+    cursor: pointer;
   }
 }
 
@@ -64,6 +78,7 @@ body {
   margin: 0 7px;
   background-color: $orange;
   cursor: pointer;
+  font-size: $comon-font-size;
 
   &:hover {
     background-color: #e7835b;
@@ -106,8 +121,9 @@ body {
   margin-bottom: 10px;
   border: 1px solid $error-message-block;
 
-  p{
-    color: $error-message
+  p {
+    color: $error-message;
+    font-size: $comon-font-size;
   }
 }
 

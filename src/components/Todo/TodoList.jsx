@@ -12,6 +12,7 @@ function TodoList({tasks}) {
   const token = useSelector(state => state.user.token)
   React.useEffect(() => {
     dispatch(setAllPages())
+  // eslint-disable-next-line
   }, [])
 
   const todoListRender = () => {

@@ -1,7 +1,7 @@
 @import '../variables';
 
 .task-block {
-  width: 320px;
+  width: 400px;
   margin: 10px 5px;
   border: 1px solid $black;
   border-radius: 10px;
@@ -21,19 +21,24 @@
       object-fit: cover;
     }
   }
+
   &__name, &__email{
     width: 80%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    font-size: $comon-font-size;
   }
+
   &__text{
     max-width: 80%;
     max-height: 150px;
     padding-top: 5px;
     word-wrap: break-word;
     padding-bottom: 10px;
+    font-size: $comon-font-size;
   }
+
   &__status{
     width: 100%;
     padding: 5px 0;
@@ -41,6 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: $comon-font-size;
 
     &.not-completed {
       background-color: $task-not-completed;
@@ -64,6 +70,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: $comon-font-size;
+      border-radius: 5px;
     }
     &_change {
       flex: 1 50%;
