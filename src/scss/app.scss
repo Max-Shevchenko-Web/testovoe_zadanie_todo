@@ -72,6 +72,22 @@ body {
   &:disabled {
     cursor: not-allowed;
   }
+
+  &.blue {
+    background-color: rgb(93, 93, 240);
+
+    &:hover {
+      background-color: rgba(93, 93, 240, 0.486);
+    }
+  }
+
+  &.red {
+    background-color: rgb(238, 71, 71);
+
+    &:hover {
+      background-color: rgba(238, 71, 71, 0.521);
+    }
+  }
 }
 
 .no-todo {
@@ -92,6 +108,21 @@ body {
 
   p{
     color: $error-message
+  }
+}
+
+.editor {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
   }
 }
 

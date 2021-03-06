@@ -15,6 +15,7 @@ export const login =  (username, password) => {
           {headers: { "Content-Type": "multipart/form-data" }})
 
           if(response.data.status === 'ok') {
+            localStorage.setItem('token', response.data.message.token)
             dispatch(setToken(response.data.message.token))
           } else {
             let username = response.data.message.username
@@ -25,5 +26,14 @@ export const login =  (username, password) => {
             dispatch(spendMessage(message))
             dispatch(logout())
           }
+  }
+}
+
+export const auth = () => {
+  return async dispatch => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      dispatch(setToken(token))
+    }
   }
 }

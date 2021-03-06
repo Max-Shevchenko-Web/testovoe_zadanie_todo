@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowPopup } from '../../redux/appReducer'
 import { createNewTask } from '../../actions/tasks';
+import TextArea from './../../util/textArea/TextArea';
 
 export const useDisableBodyScroll = (open) => {
   React.useEffect(() => {
@@ -71,6 +72,7 @@ function Popup() {
       case 'text':
             setTextDirty(true)
             break
+      default: return ''
     }
   }
 
@@ -118,8 +120,8 @@ function Popup() {
         {(emailDirty && emailError) && <div style={{color:"red"}}>{emailError}</div>}
         <input onBlur={blurHandler} name='email' type="text" placeholder="Enter email..." value={email} onChange={emailHandler}/>
         {(textDirty && textError) && <div style={{color:"red"}}>{textError}</div>}
-        <input onBlur={blurHandler} name='text' type="text" placeholder="Enter task text..." value={text} onChange={textHandler}/>
-        <button className="popup__create" disabled={!formValid} onClick={createTask}>Создать</button>
+        <TextArea  onBlur={blurHandler} name='text'  placeholder="Enter task text..." value={text} onChange={textHandler} />
+        <button className="popup__create" disabled={!formValid} onClick={createTask}>Create</button>
       </div>
     </div>
   )

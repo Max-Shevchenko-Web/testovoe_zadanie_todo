@@ -1,5 +1,5 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Task from './Task';
 import Pagination from '../Pagination';
 import { setAllPages } from '../../redux/todoReducer';
@@ -7,13 +7,15 @@ import TodoSort from './TodoSort';
 
 function TodoList({tasks}) {
   const dispatch = useDispatch()
+  const isAuth = useSelector(state => state.user.isAuth)
+  const token = useSelector(state => state.user.token)
   React.useEffect(() => {
     dispatch(setAllPages())
   }, [])
 
   const todoListRender = () => {
     return <div>
-        {tasks.map(task => <Task key={task.id}  {...task} />)}
+        {tasks.map(task => <Task key={task.id} isAuth={isAuth} token={token}  {...task} />)}
         <Pagination />
       </div>
   }

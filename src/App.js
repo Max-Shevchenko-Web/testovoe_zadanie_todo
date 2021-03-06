@@ -3,10 +3,18 @@ import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import Login from './page/Login'
 import Home from './page/Home'
 import Header from './components/Header/index';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { auth } from './actions/user';
 
 function App() {
   const isAuth = useSelector(state => state.user.isAuth)
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(auth())
+  // eslint-disable-next-line
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="wrapper">

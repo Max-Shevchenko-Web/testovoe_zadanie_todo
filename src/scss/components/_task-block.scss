@@ -32,6 +32,7 @@
     max-height: 150px;
     padding-top: 5px;
     word-wrap: break-word;
+    padding-bottom: 10px;
   }
   &__status{
     width: 100%;
@@ -42,11 +43,33 @@
     align-items: center;
 
     &.not-completed {
-      background-color: red;
+      background-color: $task-not-completed;
     }
 
     &.completed {
-      background-color: green;
+      background-color: $task-completed;
+    }
+  }
+
+
+  &__controler {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    &_edited {
+      background-color: $orange;
+      flex: 1 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_change {
+      flex: 1 50%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
   }
 }

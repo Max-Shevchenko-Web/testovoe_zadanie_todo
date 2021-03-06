@@ -3,9 +3,10 @@ import axios from 'axios'
 import { API_URL, developerName } from './../config';
 import { showLoader, hideLoader } from '../redux/appReducer';
 import { setTasks, setTotalTaskCount } from '../redux/todoReducer';
+import { checkAuth } from '../util/helper';
+import { logout } from './../redux/userReducer';
 
 export function getTasks(sort_field="id", sort_direction="asc", page=0) {
-
   return async dispatch => {
     try {
       dispatch(showLoader())
@@ -33,26 +34,38 @@ export function createNewTask(username, email, text, popupClose ) {
         {headers: { "Content-Type": "multipart/form-data" }}
       )
       if(response.data.status === 'ok') {
-        console.log(response.data)
         popupClose()
+        setTimeout(() => {
+          alert('New task has been created!')
+        }, 0);
       } else {
-        console.log(response.data.message)
+        alert('New task was not created!')
       }
   }
 }
 
 export function updateTask(id, token, text, status) {
   return async dispatch => {
-    const bodyFormData = new FormData();
-    bodyFormData.append('status', status);
-    bodyFormData.append('text', text);
-    bodyFormData.append('token', token);
+    let testAuth = checkAuth()
+    if(testAuth && token) {
+      const bodyFormData = new FormData();
+      if(status) {
+        bodyFormData.append('status', status);
+      }
+      if(text) {
+        bodyFormData.append('text', text);
+      }
+      bodyFormData.append('token', token);
 
-    const response = await axios.post(`${API_URL}/edit/${id}?developer=${developerName}`,
-      bodyFormData,
-      {headers: { "Content-Type": "multipart/form-data" }}
-    )
-
-    console.log(response.data)
+      const response = await axios.post(`${API_URL}/edit/${id}?developer=${developerName}`,
+        bodyFormData,
+        {headers: { "Content-Type": "multipart/form-data" }}
+      )
+        return response.data.status
+    }
+    dispatch(logout())
+    setTimeout(() => {
+      alert('You are not authorized!')
+    }, 0);
   }
 }
