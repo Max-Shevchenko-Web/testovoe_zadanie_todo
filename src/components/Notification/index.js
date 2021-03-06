@@ -2,14 +2,12 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const Notification = () => {
-  const notificationMessage = useSelector(store => store.app.message)
+  const notificationMessage = useSelector(store => store.app.notification || 'no')
 
-  if (notificationMessage === null) {
-    return null
-  }
+  const showNotification = notificationMessage !== 'no' ? 1 : 0
 
   return (
-    <div className="message-block">
+    <div className="message-block" style={{opacity: `${showNotification}`}}>
       <p>{notificationMessage}</p>
     </div>
   )

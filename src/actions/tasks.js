@@ -2,7 +2,8 @@ import axios from 'axios'
 
 import { API_URL, developerName } from './../config';
 import { showLoader, hideLoader } from '../redux/appReducer';
-import { setTasks, setTotalTaskCount } from '../redux/todoReducer';
+import { addNotification } from './../redux/appReducer';
+import { setTasks, setTotalTaskCount, addNewTask } from '../redux/todoReducer';
 import { checkAuth } from '../util/helper';
 import { logout } from './../redux/userReducer';
 
@@ -33,13 +34,13 @@ export function createNewTask(username, email, text, popupClose ) {
         bodyFormData,
         {headers: { "Content-Type": "multipart/form-data" }}
       )
+
       if(response.data.status === 'ok') {
         popupClose()
-        setTimeout(() => {
-          alert('New task has been created!')
-        }, 0);
+        dispatch(addNewTask(response.data.message))
+        dispatch(addNotification('New task has been created!', 5))
       } else {
-        alert('New task was not created!')
+        dispatch(addNotification('New task was not created!', 5))
       }
   }
 }
@@ -64,8 +65,6 @@ export function updateTask(id, token, text, status) {
         return response.data.status
     }
     dispatch(logout())
-    setTimeout(() => {
-      alert('You are not authorized!')
-    }, 0);
+    dispatch(addNotification('You are not authorized', 5))
   }
 }

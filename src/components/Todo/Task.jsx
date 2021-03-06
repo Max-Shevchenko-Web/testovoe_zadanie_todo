@@ -18,6 +18,8 @@ function Task({id, image_path, username, email, text, status, token, isAuth}) {
     11: {message: 'task completed', edited: 'edited by admin'}
   }
 
+  const showImage = false
+
   React.useEffect(() => {
     if(status === 0 || status === 1) {
       setClassForStatus('task-block__status not-completed')
@@ -50,9 +52,9 @@ function Task({id, image_path, username, email, text, status, token, isAuth}) {
 
   return (
     <div className="task-block">
-      <div className="task-block__image">
+      {showImage && <div className="task-block__image">
         <img src={imgURL}alt=""/>
-      </div>
+      </div>}
       {!isAuth && <div className={classForStatus}>{taskStatusObj[status].message}</div>}
       {isAuth && <select className={classForStatus} value={selectStaus} onChange={statusHandler}>
         <option style={{backgroundColor: "red"}} value="no">task not completed</option>

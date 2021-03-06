@@ -37,9 +37,9 @@ function Pagination() {
         })}
       </div>
       <div className="pagination__block">
-        <Button onClick={reducecurrentPage} disabled={currentPage === 0}>-</Button>
-        <div>Page {currentPage + 1} of {allPages}</div>
-        <Button onClick={increasecurrentPage} disabled={currentPage + 1 === allPages} >+</Button>
+        <Button onClick={reducecurrentPage} disabled={currentPage === 1}>-</Button>
+        <div>Page {currentPage} of {allPages}</div>
+        <Button onClick={increasecurrentPage} disabled={currentPage  === allPages} >+</Button>
       </div>
     </div>
   )

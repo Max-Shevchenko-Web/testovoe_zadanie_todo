@@ -4,6 +4,7 @@ import Task from './Task';
 import Pagination from '../Pagination';
 import { setAllPages } from '../../redux/todoReducer';
 import TodoSort from './TodoSort';
+import Notification from './../Notification/index';
 
 function TodoList({tasks}) {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function TodoList({tasks}) {
 
   return (
     <div className="todolist">
+      <Notification />
       <TodoSort/>
       {tasks.length === 0  ? noTasksRender() :todoListRender()}
     </div>

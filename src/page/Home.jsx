@@ -16,10 +16,11 @@ function Home() {
     dispatch(getTasks(sortField, sortDirection, currentPage))
   }, [currentPage, sortField, sortDirection])
 
+  const tasksOnPage = tasks.slice(0, 3)
 
   const tasksRender = () => {
     return !loading
-            ? <TodoList tasks={tasks}/>
+            ? <TodoList tasks={tasksOnPage}/>
             : null
   }
 

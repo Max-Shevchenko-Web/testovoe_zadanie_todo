@@ -2,8 +2,8 @@ import axios from 'axios'
 
 import { API_URL, developerName } from './../config';
 import { setToken } from '../redux/userReducer';
-import { spendMessage } from './../util/helper';
 import { logout } from './../redux/userReducer';
+import { addNotification, clearNotification } from './../redux/appReducer';
 
 export const login =  (username, password) => {
   return async dispatch => {
@@ -17,13 +17,16 @@ export const login =  (username, password) => {
           if(response.data.status === 'ok') {
             localStorage.setItem('token', response.data.message.token)
             dispatch(setToken(response.data.message.token))
+            dispatch(clearNotification())
           } else {
-            let username = response.data.message.username
-            let usernameMessage = username ? `username: ${username}`: ''
-            let password = response.data.message.password
-            let passwordMessage = password ? `password: ${password}`: ''
-            const message = `${usernameMessage} ${passwordMessage}`
-            dispatch(spendMessage(message))
+            let username = response.data.message.username ? response.data.message.username : ''
+            let password = response.data.message.password ? response.data.message.password : ''
+            if(username === password) {
+              username = ''
+            }
+
+            const message = `${username} ${password}`
+            dispatch(addNotification(message, 5))
             dispatch(logout())
           }
   }
