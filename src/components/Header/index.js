@@ -20,7 +20,7 @@ function Header() {
   return (
     <div className="header">
       <div className="container">
-        <NavLink to="/">
+        <NavLink to="/" onClick={clearMessage}>
           <div className="header__title">Yes-Todo</div>
         </NavLink>
         {!isAuth && <div className="header__login" onClick={clearMessage}><NavLink to="/login">Login</NavLink></div>}
